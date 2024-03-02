@@ -2,81 +2,49 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const AppWidget(
-      title: 'My app',
-    ));
+void main() => runApp(const LoginApp());
 
-class AppWidget extends StatelessWidget {
-  final String title;
-
-  const AppWidget({super.key, required this.title});
+class LoginApp extends StatelessWidget {
+  const LoginApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData.light(), title: title, home: const HomePage());
+      title: 'Login',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const LoginPage(),
+    );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() {
-    return HomePageState();
-  }
-}
-
-class HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _increment() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrement() {
-    if (_counter > 0) {
-      setState(() {
-        _counter--;
-      });
-    }
-  }
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Counter')),
-        body: Center(
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
+      body: Padding(
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Counter value: ',
-                style: TextStyle(fontSize: 20),
+            children: [
+              const TextField(
+                decoration: InputDecoration(
+                    labelText: 'Email', hintText: 'Digite seu email'),
               ),
-              Text(
-                '$_counter',
-                style:
-                    const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              )
+              const SizedBox(height: 20),
+              const TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: 'Senha', hintText: 'Digite sua senha'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(onPressed: () => {}, child: const Text('Entrar'))
             ],
-          ),
-        ),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              onPressed: _decrement,
-              tooltip: 'Decrement',
-              child: const Icon(Icons.remove),
-            ),
-            FloatingActionButton(
-                onPressed: _increment,
-                tooltip: 'Increment',
-                child: const Icon(Icons.add))
-          ],
-        ));
+          )),
+    );
   }
 }
