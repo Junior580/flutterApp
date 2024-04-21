@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/components/Posts.dart';
 import 'package:myapp/pages/home.dart';
 import 'package:myapp/pages/admin.dart';
 
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Exemplo de Rotas',
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
-        '/second': (context) => const AdminPage(),
+        '/': (context) => const Posts()
+        // '/': (context) => const HomePage(),
+        // '/second': (context) => const AdminPage(),
       },
     );
   }
