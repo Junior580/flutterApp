@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart'
+    show CarouselOptions, CarouselSlider;
 
 class ProductCard extends StatelessWidget {
   final List<String> imagePaths;
